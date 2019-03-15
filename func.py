@@ -25,7 +25,7 @@ def generate_pw(first_name, last_name):
 
 
 def run_cmd(cmd_line):
-    cmd_res = subprocess.Popen(cmd_line, shell=True, stdout = subprocess.PIPE, stderr = subprocess.PIPE).communicate()
+    cmd_res = subprocess.Popen(cmd_line, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
     msg = cmd_res[0].decode("cp1252", "ignore")
     error = cmd_res[1].decode("cp1252", "ignore")
     if msg:
