@@ -19,11 +19,11 @@ for first_name_generate, last_name_generate in zip(first_name_generate, last_nam
     func.generate_id(first_name_generate, last_name_generate)
     func.generate_pw(first_name_generate, last_name_generate)
 
-userid = func.existing_ids
+user_id = func.existing_ids
 password = func.existing_pws
 
 i = 0
-for user in userid:
+for user in user_id:
     cmd_command = "dsadd user cn=" + user + "," + ou + ",dc=g105,dc=local -memberof "
     cmd_command = cmd_command + "cn=" + grupp + "," + ou + ",dc=g105,dc=local "
     cmd_command = cmd_command + "-upn " + user + " -samid " + user + " -hmdir " + unc
