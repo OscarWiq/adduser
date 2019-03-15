@@ -27,7 +27,7 @@ for user in userid:
     cmd_command = "dsadd user cn=" + user + "," + ou + ",dc=g105,dc=local -memberof "
     cmd_command = cmd_command + "cn=" + grupp + "," + ou + ",dc=g105,dc=local "
     cmd_command = cmd_command + "-upn " + user + " -samid " + user + " -hmdir " + unc
-    cmd_command = cmd_command + " -hmdrv H -pwd " + password[n] + " -pwdneverexpires no"
+    cmd_command = cmd_command + " -hmdrv H -pwd " + password[i] + " -pwdneverexpires no"
     func.run_cmd(cmd_command)
     i += 1
     
