@@ -1,7 +1,7 @@
 import subprocess
 
 existing_ids = []
-passwords = []
+existing_pws = []
 
 def generate_id(first_name, last_name):
     id_num = 1
@@ -17,16 +17,18 @@ def generate_pw(first_name, last_name):
     id_num = 1
     while True:
         candidate_pw = first_name[0].lower() + first_name[-1].lower() + ('-') + last_name[0].lower() + last_name[-1].lower() + str(id_num) + ('!')
-        if not candidate_pw in passwords:
-            passwords.append(candidate_pw)
+        if not candidate_pw in existing_pws:
+            existing_pws.append(candidate_pw)
             return candidate_pw
         id_num += 1
 
-def run_cmd(cmd_line):
-    cmd_res = subprocess.Popen(cmd_line, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE).communitecate()
-    msg = cmd_res[0].decode("cp1252", "ignore")
-    error = cmd_res[1].decode("cp1252", "ignore")
+
+def run_cmd(command):
+    cmd_res = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE).communicate()
+    msg = cmd_res[0].decode()
+    error = cmd_res[1].decode()
     if msg:
-        print("OK: " + msg)
+        print("OK" + cmd_res[0].decode("ascii"))
     if error:
-        print("ERROR: " + error + "\n")
+        print("ERROR" + cmd_res[1].decode("ascii") + "\n")
