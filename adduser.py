@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import func
 
 namefile = input("Fil med namn: ").lower()
