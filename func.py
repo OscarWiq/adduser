@@ -24,11 +24,11 @@ def generate_pw(first_name, last_name):
         id_num += 1
 
 
-def run_cmd(command):
-    cmd_res = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-    msg = cmd_res[0].decode()
-    error = cmd_res[1].decode()
+def run_cmd(cmd_line):
+    cmd_res = subprocess.Popen(cmd_line, shell=True, stdout = subprocess.PIPE, stderr = subprocess.PIPE).communicate()
+    msg = cmd_res[0].decode("cp1252", "ignore")
+    error = cmd_res[1].decode("cp1252", "ignore")
     if msg:
-        print("OK" + cmd_res[0].decode("ascii"))
+        print('OK: ' + msg)
     if error:
-        print("ERROR" + cmd_res[1].decode("ascii") + "\n")
+        print('ERROR: ' + error + '\n')
