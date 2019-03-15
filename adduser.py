@@ -18,7 +18,7 @@ user_ids = func.existing_ids
 passwords = func.existing_pws
 
 for i in range(0, len(user_ids)):
-    cmd_command = "dsadd user cn=" + user_ids[i] + "," + ou + ",dc=g105,dc=local -memberof "
+    cmd_command = "dsadd user cn=" + first_name[i] + "," + last_name[i] + "," + ou + ",dc=g105,dc=local -memberof "
     cmd_command += "cn=" + group + "," + ou + ",dc=g105,dc=local "
     cmd_command += "-upn " + user_ids[i] + " -samid " + user_ids[i] + " -hmdir " + unc
     cmd_command += " -hmdrv H -pwd " + passwords[i] + " -pwdneverexpires no"
