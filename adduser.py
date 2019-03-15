@@ -20,14 +20,12 @@ for first_names, last_names in zip(first_names, last_names):
 user_ids = func.existing_ids
 passwords = func.existing_pws
 
-i = 0
-for user in user_ids:
-    cmd_command = "dsadd user cn=" + user + "," + ou + ",dc=g105,dc=local -memberof "
+for i in range(0, len(user_ids)):
+    cmd_command = "dsadd user cn=" + user_ids[i] + "," + ou + ",dc=g105,dc=local -memberof "
     cmd_command = cmd_command + "cn=" + group + "," + ou + ",dc=g105,dc=local "
-    cmd_command = cmd_command + "-upn " + user + " -samid " + user + " -hmdir " + unc
+    cmd_command = cmd_command + "-upn " + user_ids[i] + " -samid " + user_ids[i] + " -hmdir " + unc
     cmd_command = cmd_command + " -hmdrv H -pwd " + passwords[i] + " -pwdneverexpires no"
     func.run_cmd(cmd_command)
-    i += 1
 
 input("Press ENTER to exit")
     
