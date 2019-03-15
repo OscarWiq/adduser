@@ -10,10 +10,7 @@ with open(file_name, 'r') as f:
     first_name = [x.split()[0] for x in name]
     last_name = [y.split()[1] for y in name]
 
-first_names = first_name.copy()
-last_names = last_name.copy()
-
-for first_names, last_names in zip(first_names, last_names):
+for first_names, last_names in zip(first_name, last_name):
     func.generate_id(first_names, last_names)
     func.generate_pw(first_names, last_names)
 
