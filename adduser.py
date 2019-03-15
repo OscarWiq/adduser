@@ -30,3 +30,6 @@ for user in userid:
     cmd_command = cmd_command + " -hmdrv H -pwd " + password[n] + " -pwdneverexpires no"
     func.run_cmd(cmd_command)
     i += 1
+    
+input("Press ENTER to exit")
+    
