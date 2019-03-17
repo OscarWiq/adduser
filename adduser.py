@@ -6,8 +6,7 @@ unc = input("UNC-sökväg till mappen med hemkataloger: ")
 group = input("Namn på gruppen som kontona ska tillhöra: ")
 
 with open(file_name, 'r') as f:
-    full_names = f.read().splitlines()  # splitlines removes \n from each array element
-    names = list(map(lambda name: (name.split()[0], name.split()[1]), full_names))
+    names = list(map(lambda name: (name.split()[0], name.split()[1]), f.read().splitlines()))
 
 for (user_id, password, first_name, last_name) in func.generate_candidates(names):
     cmd_command = "dsadd user cn=" + user_id + "," + ou + ",dc=g105,dc=local -memberof "
