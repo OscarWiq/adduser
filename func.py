@@ -12,11 +12,12 @@ def generate_candidates(names):
         id_num += 1
     return tokens
 
+
 def run_cmd(cmd_line):
-    cmd_res = subprocess.Popen(cmd_line, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE).communitecate()
+    cmd_res = subprocess.Popen(cmd_line, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
     msg = cmd_res[0].decode("cp1252", "ignore")
     error = cmd_res[1].decode("cp1252", "ignore")
     if msg:
-        print("OK: " + msg)
+        print('OK: ' + msg)
     if error:
-        print("ERROR: " + error + "\n")
+        print('ERROR: ' + error + '\n')

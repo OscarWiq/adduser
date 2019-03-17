@@ -24,4 +24,4 @@ for (user_id, password, fname, lname) in func.generate_candidates(names):
 
 input("Press ENTER to exit")
 
-
+    
