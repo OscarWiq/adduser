@@ -1,26 +1,16 @@
 import subprocess
 
-existing_ids = []
-passwords = []
-
-def generate_id(first_name, last_name):
+def generate_candidates(names):
+    tokens = []
     id_num = 1
-    while True:
-        candidate_id = first_name[0].lower() + first_name[-1].lower() \
-                       + last_name[0].lower() + last_name[-1].lower() + str(id_num)
-        if not candidate_id in existing_ids:
-            existing_ids.append(candidate_id)
-            return candidate_id
+    for (first_name, last_name) in names:
+        first_token = first_name[0].lower() + first_name[-1].lower()
+        last_token = last_name[0].lower() + last_name[-1].lower() + str(id_num)
+        candidate_id = first_token + last_token
+        candidate_pw = first_token + '-' + last_token + '!'
+        tokens.append((candidate_id, candidate_pw, first_name, last_name))
         id_num += 1
-
-def generate_pw(first_name, last_name):
-    id_num = 1
-    while True:
-        candidate_pw = first_name[0].lower() + first_name[-1].lower() + ('-') + last_name[0].lower() + last_name[-1].lower() + str(id_num) + ('!')
-        if not candidate_pw in passwords:
-            passwords.append(candidate_pw)
-            return candidate_pw
-        id_num += 1
+    return tokens
 
 def run_cmd(cmd_line):
     cmd_res = subprocess.Popen(cmd_line, shell = True, stdout = subprocess.PIPE, stderr = subprocess.PIPE).communitecate()
