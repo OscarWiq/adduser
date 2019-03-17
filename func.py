@@ -1,5 +1,6 @@
 import subprocess
 
+
 def generate_candidates(names):
     def recursion(names, acc, id_num, iterations):
         if len(names) <= 0:
