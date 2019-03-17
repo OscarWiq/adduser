@@ -11,7 +11,7 @@ def splitter(str):
 
 with open(file_name, 'r') as f:
     full_name = f.read().splitlines()  # splitlines removes \n from each array element
-    # names = list(map(lambda name: (name.split()[0], name.split()[1]), full_names))
+    # names = list(map(lambda name: (name.split()[0], name.split()[1]), full_name))
     names = list(map(splitter, full_name))
 
 for (user_id, password, fname, lname) in func.generate_candidates(names):
