@@ -4,13 +4,13 @@ def generate_candidates(names):
     def recursion(names, acc, id_num, iterations):
         if len(names) <= 0:
             return acc
-        (fname, lname) = names[0]
-        first_token = fname[0].lower() + fname[-1].lower()
-        last_token = lname[0].lower() + lname[-1].lower() + str(id_num)
+        (first_name, last_name) = names[0]
+        first_token = first_name[0].lower() + first_name[-1].lower()
+        last_token = last_name[0].lower() + last_name[-1].lower() + str(id_num)
         candidate_id = first_token + last_token
         candidate_pw = first_token + '-' + last_token + '!'
         if len(acc) <= 0 or not candidate_id in [x for (x,y,z,v) in acc]:
-            acc.append((candidate_id, candidate_pw, fname, lname))
+            acc.append((candidate_id, candidate_pw, first_name, last_name))
             return recursion(names[1:], acc, id_num - iterations, 0)
         else:
             return recursion(names, acc, id_num + 1, iterations + 1)
