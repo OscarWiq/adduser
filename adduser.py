@@ -11,9 +11,10 @@ with open(file_name, 'r') as f:
 for (user_id, password, first_name, last_name) in func.generate_candidates(names):
     cmd_command = "dsadd user cn=" + user_id + "," + ou + ",dc=g105,dc=local -memberof "
     cmd_command += "cn=" + group + "," + ou + ",dc=g105,dc=local "
-    cmd_command += " -samid " + user_id + "-upn " + user_id
+    cmd_command += "-samid " + user_id + " -upn " + user_id + "@g105.local"
     cmd_command += " -fn " + first_name + " -ln " + last_name + " -hmdir " + unc
     cmd_command += " -hmdrv H -pwd " + password + " -pwdneverexpires no"
+    print(cmd_command)
     func.run_cmd(cmd_command)
 
 input("Press ENTER to exit")
